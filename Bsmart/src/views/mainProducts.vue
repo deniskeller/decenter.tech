@@ -1,6 +1,6 @@
 <template>
     <div class="bg-main">
-      <div class="sdf"></div>
+      
     </div>
   
  
