@@ -1,0 +1,62 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "chart.js": "^2.8.0",
+    "echarts": "^4.2.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-vue": "^0.8.1",
+    "vue": "^2.6.9",
+    "vue-chartjs": "^3.4.2",
+    "vue-datatable": "^1.0.4",
+    "vue-recaptcha": "^1.1.1",
+    "vue-router": "^3.0.2",
+    "vue-scrollactive": "^0.8.0",
+    "vuetify": "^1.5.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.1",
+    "@vue/cli-plugin-eslint": "^3.5.1",
+    "@vue/cli-service": "^3.5.1",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.15.3",
+    "eslint-plugin-vue": "^5.2.2",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.9"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
