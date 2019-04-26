@@ -13,18 +13,17 @@
       
       <scrollactive class="my-nav" v-on:itemchanged="onItemChanged" active-class="active" :offset="80" :duration="800" bezier-easing-value=".5,0,.35,1">
         <ul class="header_nav-navbar">
-          <li><a href="#" @click="goTo('/');">Главная</a></li>
-          <li><a href="#" @click="goTo('/contract');">Контракты</a></li>
-          <li><a href="#" @click="goTo('/myContracts');">Мои контракты</a></li>
-          <li><a href="#" @click="goTo('/portfolio');">Кошелек</a></li>
-          <li><a href="#" >Командам</a></li>
-          <li><a href="#" >FAQ</a></li>
+          <li><a href="#bsmart" class="scrollactive-item">Что такое BitSmart?</a></li>
+          <li><a href="#advantages" class="scrollactive-item">Преимущества</a></li>
+          <li><a href="#getting" class="scrollactive-item">Как получить токен?</a></li>
+          <li><a href="#team" class="scrollactive-item">Командам</a></li>
+          <li><a href="#questions" class="scrollactive-item">FAQ</a></li>
         </ul>
       </scrollactive>
       
       
       <div class="header_nav-social">
-        <img class="social-img inst" src="../assets/instagram.svg">
+        <img class="social-img inst" src="../assets/instagram.svg" @click="goTo('/myContracts');">
         <img class="social-img fb" src="../assets/facebook.svg">
         <img class="social-img vk" src="../assets/telegram.svg">
       </div>
@@ -118,41 +117,39 @@
   
 </template>
 
-<style scoped lang="less">
+<style scoped>
 @import '../main.less';
 
-.bg-content .header_nav {
+.header-block .header_nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding-top: 73px;
-  margin-bottom: 50px;
 }
-.bg-content .header_nav .header-nav_left .header_nav-logo {
+.header-block .header_nav .header-nav_left .header_nav-logo {
   width: 126px;
   height: 28px;
   cursor: pointer;
   margin-right: 50px;
 }
-.bg-content .header_nav .header-nav_left .header_nav-logo:hover {
+.header-block .header_nav .header-nav_left .header_nav-logo:hover {
   opacity: 0.5;
 }
-.bg-content .header_nav .header-nav_right {
+.header-block .header_nav .header-nav_right {
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
 }
-.bg-content .header_nav .header-nav_right .header_nav-navbar {
+.header-block .header_nav .header-nav_right .header_nav-navbar {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding-top: 6px;
   margin-right: 54px;
 }
-.bg-content .header_nav .header-nav_right .header_nav-navbar li {
+.header-block .header_nav .header-nav_right .header_nav-navbar li {
   font-size: 12px;
   line-height: 14px;
   color: #fff;
@@ -160,14 +157,14 @@
   cursor: pointer;
   list-style: none;
 }
-.bg-content .header_nav .header-nav_right .header_nav-navbar li a {
+.header-block .header_nav .header-nav_right .header_nav-navbar li a {
   color: #fff;
   text-decoration: none;
 }
-.bg-content .header_nav .header-nav_right .header_nav-navbar li:last-child {
+.header-block .header_nav .header-nav_right .header_nav-navbar li:last-child {
   margin-right: 0px;
 }
-.bg-content .header_nav .header-nav_right .header_nav-navbar li:after {
+.header-block .header_nav .header-nav_right .header_nav-navbar li:after {
   display: block;
   content: "";
   height: 2px;
@@ -175,78 +172,60 @@
   background-color: #3b60d0;
   transition: width 0.4s ease-in-out;
 }
-.bg-content .header_nav .header-nav_right .header_nav-navbar li:hover:after,
-.bg-content .header_nav .header-nav_right .header_nav-navbar li:focus:after {
+.header-block .header_nav .header-nav_right .header_nav-navbar li:hover:after,
+.header-block .header_nav .header-nav_right .header_nav-navbar li:focus:after {
   width: 100%;
 }
-.bg-content .header_nav .header-nav_right .header_nav-social {
+.header-block .header_nav .header-nav_right .header_nav-social {
   display: flex;
   flex-direction: row;
   margin-right: 43px;
 }
-.bg-content .header_nav .header-nav_right .header_nav-social .social-img {
+.header-block .header_nav .header-nav_right .header_nav-social .social-img {
   width: 15px;
   height: 15px;
   margin-right: 20px;
   cursor: pointer;
 }
-.bg-content .header_nav .header-nav_right .header_nav-social .social-img:last-child {
+.header-block .header_nav .header-nav_right .header_nav-social .social-img:last-child {
   margin-right: 0px;
 }
-.bg-content .header_nav .header-nav_right .header_nav-social .social-img:hover {
+.header-block .header_nav .header-nav_right .header_nav-social .social-img:hover {
   opacity: 0.5;
 }
-.bg-content .header_nav .header-nav_right .header_nav-lang {
-  width: 53px;
+.header-block .header_nav .header-nav_right .header_nav-lang {
+  width: 35px;
   font-size: 12px;
   line-height: 24px;
   text-transform: uppercase;
   color: #fff;
   background-image: url('../assets/mini_arrow.png');
   background-repeat: no-repeat;
-  background-position: 45px 10px;
+  background-position: 20px 10px;
   cursor: pointer;
   position: relative;
 }
-.bg-content .header_nav .header-nav_right .header_nav-lang .lang-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.bg-content .header_nav .header-nav_right .header_nav-lang .lang-item img {
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-}
-.bg-content .header_nav .header-nav_right .header_nav-lang .other {
+.header-block .header_nav .header-nav_right .header_nav-lang .other {
   position: absolute;
 }
-.bg-content .header_nav .header-nav_right .header_nav-lang .other li {
+.header-block .header_nav .header-nav_right .header_nav-lang .other li {
   list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
-.bg-content .header_nav .header-nav_right .header_nav-lang .other li img {
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-}
-.bg-content .header_nav .header-nav_right .header_nav-lang .other li:hover {
+.header-block .header_nav .header-nav_right .header_nav-lang .other li:hover {
   background: #1e2123;
   width: 30px;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login {
+.header-block .header_nav .header-nav_right .header_nav-login {
   margin-left: 35px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login .btn {
+.header-block .header_nav .header-nav_right .header_nav-login .btn {
   font-size: 12px;
   color: #fff;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login .btn-check {
+.header-block .header_nav .header-nav_right .header_nav-login .btn-check {
   line-height: 29px;
   width: 115px;
   background: #4169e2;
@@ -256,40 +235,40 @@
   border: 1px solid #4169e2;
   cursor: pointer;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login .btn-check:hover {
+.header-block .header_nav .header-nav_right .header_nav-login .btn-check:hover {
   background: none;
   box-sizing: border-box;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login .btn-entrance {
+.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login .btn-entrance .login_hover {
+.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance .login_hover {
   display: none;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login .btn-entrance img {
+.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance img {
   width: 13px;
   height: 13px;
   margin-right: 5px;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login .btn-entrance:hover {
+.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance:hover {
   color: #3b60d0;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login .btn-entrance:hover .login_hover {
+.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance:hover .login_hover {
   display: block;
 }
-.bg-content .header_nav .header-nav_right .header_nav-login .btn-entrance:hover .login_activ {
+.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance:hover .login_activ {
   display: none;
 }
-.bg-content .header_nav .menu-btn {
+.header-block .header_nav .menu-btn {
   z-index: 1000;
   display: none;
   width: 22px;
   height: 22px;
   position: relative;
 }
-.bg-content .header_nav .menu-mobile {
+.header-block .header_nav .menu-mobile {
   position: absolute;
   top: 0;
   left: 0;
@@ -298,20 +277,20 @@
   padding-top: 75px;
   background: #0f151b;
 }
-.bg-content .header_nav .menu-mobile .logo_mobile {
+.header-block .header_nav .menu-mobile .logo_mobile {
   width: 126px;
 }
-.bg-content .header_nav .menu-mobile .header-top__menu-mobile {
+.header-block .header_nav .menu-mobile .header-top__menu-mobile {
   margin-left: 20px;
   margin-right: 20px;
 }
-.bg-content .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar {
+.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar {
   width: 100%;
   display: inlime-flex;
   flex-direction: column;
   margin-top: 30px;
 }
-.bg-content .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li {
+.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li {
   display: block;
   font-size: 12px;
   line-height: 14px;
@@ -321,11 +300,11 @@
   margin-bottom: 25px;
   max-width: 120px;
 }
-.bg-content .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li a {
+.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li a {
   color: #fff;
   text-decoration: none;
 }
-.bg-content .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li:after {
+.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li:after {
   display: block;
   content: "";
   height: 2px;
@@ -333,81 +312,63 @@
   background-color: #3b60d0;
   transition: width 0.4s ease-in-out;
 }
-.bg-content .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li:hover:after,
-.bg-content .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li:focus:after {
+.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li:hover:after,
+.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li:focus:after {
   width: 100%;
 }
-.bg-content .header_nav .menu-mobile .header_nav-social {
+.header-block .header_nav .menu-mobile .header_nav-social {
   display: flex;
   flex-direction: row;
   margin-right: 20px;
   margin-left: 20px;
   margin-bottom: 30px;
 }
-.bg-content .header_nav .menu-mobile .header_nav-social .social-img {
+.header-block .header_nav .menu-mobile .header_nav-social .social-img {
   width: 15px;
   height: 15px;
   margin-right: 20px;
   cursor: pointer;
 }
-.bg-content .header_nav .menu-mobile .header_nav-social .social-img:last-child {
+.header-block .header_nav .menu-mobile .header_nav-social .social-img:last-child {
   margin-right: 0px;
 }
-.bg-content .header_nav .menu-mobile .header_nav-social .social-img:hover {
+.header-block .header_nav .menu-mobile .header_nav-social .social-img:hover {
   opacity: 0.5;
 }
-.bg-content .header_nav .menu-mobile .header_nav-lang {
-  width: 50px;
+.header-block .header_nav .menu-mobile .header_nav-lang {
+  width: 35px;
   font-size: 12px;
   line-height: 24px;
   text-transform: uppercase;
   color: #fff;
   background-image: url('../assets/mini_arrow.png');
   background-repeat: no-repeat;
-  background-position: 43px 10px;
+  background-position: 20px 10px;
   cursor: pointer;
   position: relative;
 }
-.bg-content .header_nav .menu-mobile .header_nav-lang .lang-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.bg-content .header_nav .menu-mobile .header_nav-lang .lang-item img {
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-}
-.bg-content .header_nav .menu-mobile .header_nav-lang .other {
+.header-block .header_nav .menu-mobile .header_nav-lang .other {
   position: absolute;
 }
-.bg-content .header_nav .menu-mobile .header_nav-lang .other li {
+.header-block .header_nav .menu-mobile .header_nav-lang .other li {
   list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
-.bg-content .header_nav .menu-mobile .header_nav-lang .other li img {
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-}
-.bg-content .header_nav .menu-mobile .header_nav-lang .other li:hover {
+.header-block .header_nav .menu-mobile .header_nav-lang .other li:hover {
   background: #1e2123;
   width: 30px;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login {
+.header-block .header_nav .menu-mobile .header_nav-login {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: 20px;
   margin-bottom: 30px;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login .btn {
+.header-block .header_nav .menu-mobile .header_nav-login .btn {
   font-size: 12px;
   color: #fff;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login .btn-check {
+.header-block .header_nav .menu-mobile .header_nav-login .btn-check {
   line-height: 29px;
   width: 115px;
   background: #4169e2;
@@ -417,30 +378,30 @@
   border: 1px solid #4169e2;
   cursor: pointer;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login .btn-check:hover {
+.header-block .header_nav .menu-mobile .header_nav-login .btn-check:hover {
   background: none;
   box-sizing: border-box;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login .btn-entrance {
+.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login .btn-entrance .login_hover {
+.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance .login_hover {
   display: none;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login .btn-entrance img {
+.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance img {
   width: 13px;
   height: 13px;
   margin-right: 5px;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login .btn-entrance:hover {
+.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance:hover {
   color: #3b60d0;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login .btn-entrance:hover .login_hover {
+.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance:hover .login_hover {
   display: block;
 }
-.bg-content .header_nav .menu-mobile .header_nav-login .btn-entrance:hover .login_activ {
+.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance:hover .login_activ {
   display: none;
 }
 
@@ -504,7 +465,7 @@
 
 <script>
 export default {
-  name: "navbarSecond",
+  name: "navbarMain",
   data() {
     return{
       show: false,

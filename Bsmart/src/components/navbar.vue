@@ -1,465 +1,379 @@
 <template>
-  
-  <div class="header_nav">
-    
-    <div class="header-nav_left">
-      <div class="header_nav-logo">
-        <img src="../assets/Logo.svg" alt="">
-      </div>
-    </div>
-    
-    <div class="header-nav_right">
-      
-      
-      <scrollactive class="my-nav" v-on:itemchanged="onItemChanged" active-class="active" :offset="80" :duration="800" bezier-easing-value=".5,0,.35,1">
-        <ul class="header_nav-navbar">
-          <li><a href="#bsmart" class="scrollactive-item">Что такое BitSmart?</a></li>
-          <li><a href="#advantages" class="scrollactive-item">Преимущества</a></li>
-          <li><a href="#getting" class="scrollactive-item">Как получить токен?</a></li>
-          <li><a href="#team" class="scrollactive-item">Командам</a></li>
-          <li><a href="#questions" class="scrollactive-item">FAQ</a></li>
-        </ul>
-      </scrollactive>
-      
-      
-      <div class="header_nav-social">
-        <img class="social-img inst" src="../assets/instagram.svg" @click="goTo('/myContracts');">
-        <img class="social-img fb" src="../assets/facebook.svg" @click="goTo('/mainProducts');">
-        <img class="social-img vk" src="../assets/telegram.svg">
-      </div>
-      
-      <div class="header_nav-lang">
-        <transition name="fade" mode="out-in">
-          <div class="lang-item" @click="isShowing ^= true">RU</div>
-        </transition>
+    <div class="navbar-bg">
+      <div class="container">
+        <nav id="navigator" class="navbar" :class="{navbaropen: opened}">
+          <span class="open-slide">
+            <a href="#" @click="opened = !opened">
+              <div class="con">
+                <div class="bar" :class="{baropened: opened}"></div>
+              </div>
+            </a>
+          </span>
+          <span class="profile">
+            <div class="profilebox" @click="isShowing ^= true">
+              <img class="user-img" src="../assets/main/profile1.png" alt="img">
+              <b>Jonathan Doe</b>
+              <img class="dropdown-img" src="../assets/main/dropdown.png" alt="">
+              <ul class="dropdown-menu" v-show="isShowing">
+                <li @click="goTo('/');">На главную</li>
+                <li @click="goTo('/myContracts');">Мои контракты</li>
+                <li @click="goTo('/contract');">Контракты</li>
+                <li @click="goTo('/portfolio');">Портфели</li>
+                <li @click="goTo('/products');">Продукты</li>
+                <li>Настройки</li>
+                <li>Выход</li>
+              </ul>
+            </div>
+            
+            <div class="profilexit" @click="goTo('/login');">
+              <img class="logout-img" src="../assets/main/logout.svg" alt="">
+              <img class="logout-img_hover" src="../assets/main/logout_hover.svg" alt="">
+              <b>Выйти</b>
+            </div>
+              
+          </span>
+        </nav>
         
-        <transition name="fade">
-          <ul class="other" v-show="isShowing">
-            <li>EN</li>
-            <li>DE</li>
-          </ul>
-        </transition>
-      </div>
-      
-      <div class="header_nav-login">
-        
-        <div class="btn btn-check" @click="goTo('/register');">Регистрация</div>
-        
-        <div class="btn btn-entrance" @click="goTo('/login');">
-            <img class="entrance-img login_hover" src="../assets/login_hover.svg" alt="">
-            <img class="entrance-img login_activ" src="../assets/login.svg" alt="" >Вход
+        <div id="side-menu" class="side-nav" :class="{sidenavopen: opened}">
+          
+          <div class="toplist">
+            <div class="toplist-item" @click="goTo('/');">
+              <div class="toplist-item_img toplist-item_img-logo">
+                <img src="../assets/main/logo_menu.png" alt="">
+              </div>
+            </div>
+            <div class="toplist-item">
+              <div class="toplist-item_img">
+                <img src="../assets/main/dashboard.svg" alt="">
+              </div>
+              <div class="toplist-item_name">Dashboard</div>
+            </div>
+            <div class="toplist-item">
+              <div class="toplist-item_img">
+                <img src="../assets/main/menu.svg" alt="">
+              </div>
+              <div class="toplist-item_name">Products</div>
+            </div>
+            <div class="toplist-item">
+              <div class="toplist-item_img">
+                <img src="../assets/main/network.svg" alt="">
+              </div>
+              <div class="toplist-item_name">Referds</div>
+            </div>
+            <div class="toplist-item">
+              <div class="toplist-item_img">
+                <img src="../assets/main/transfer.svg" alt="">
+              </div>
+              <div class="toplist-item_name">Transaction</div>
+            </div>
+          </div>
+          
+          <div class="botlist">
+            <div class="botlist-item">
+              <div class="botlist-item_img">
+                <img src="../assets/main/headphones.svg" alt="">
+              </div>
+              <div class="botlist-item_name">Support</div>
+            </div>
+            <div class="botlist-item">
+              <div class="botlist-item_img">
+                <img src="../assets/main/info.svg" alt="">
+              </div>
+              <div class="botlist-item_name">Information</div>
+            </div>
+          </div>
+          
         </div>
         
       </div>
-      
     </div>
-    <transition name="fade" mode="out-in">
-       <div class="menu-btn" >
-        <i class="material-icons menu" v-if="!show" @click="show = !show" key="menu">menu</i>
-        <i class="material-icons clear" v-else @click="show = !show" key="clear">clear</i>
-      </div>
-    </transition>  
-   
-    <transition name="fade">
-      <div class="menu-mobile" v-if="show">
-      
-          <div class="header-top__menu-mobile">
-            <img src="../assets/Logo.svg" class="logo_mobile">
-            
-            
-            <scrollactive class="my-nav" v-on:itemchanged="onItemChanged" active-class="active" :offset="80" :duration="800" bezier-easing-value=".5,0,.35,1">
-              <ul class="header_nav-navbar">
-                <li><a href="#bsmart">Что такое BitSmart?</a></li>
-                <li><a href="#advantages">Преимущества</a></li>
-                <li><a href="#getting">Как получить токен?</a></li>
-                <li><a href="#team">Командам</a></li>
-                <li><a href="#questions">FAQ</a></li>
-              </ul>
-            </scrollactive>
-            
-            
-          </div>
-          
-          <div class="header_nav-social">
-            <img class="social-img inst" src="../assets/instagram.svg">
-            <img class="social-img fb" src="../assets/facebook.svg">
-            <img class="social-img vk" src="../assets/telegram.svg">
-          </div>
-          
-          <div class="header_nav-login">
-            
-            <div class="header_nav-lang">
-              <transition name="fade" mode="out-in">
-                <div class="lang-item" @click="isShowing ^= true">RU</div>
-              </transition>
-              
-              <transition name="fade">
-                <ul class="other" v-show="isShowing">
-                  <li>EN</li>
-                  <li>DE</li>
-                </ul>
-              </transition>
-            </div>
-          
-            <div class="btn btn-check" @click="goTo('/register');">Регистрация</div>
-            
-              <div class="btn btn-entrance" @click="goTo('/login');">
-                  <img class="entrance-img login_hover" src="../assets/login_hover.svg" alt="">
-                  <img class="entrance-img login_activ" src="../assets/login.svg" alt="">Вход
-              </div>
-            
-          </div>
-          
-      </div>
-    </transition>
-    
-  </div>
   
 </template>
 
-<style scoped>
+<style scoped lang="less">
 @import '../main.less';
-
-.header-block .header_nav {
+.navbar-bg{
+  background-color: #3b60d0;
+}
+.navbar{
+  height: 46px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-}
-.header-block .header_nav .header-nav_left .header_nav-logo {
-  width: 126px;
-  height: 28px;
-  cursor: pointer;
-  margin-right: 50px;
-}
-.header-block .header_nav .header-nav_left .header_nav-logo:hover {
-  opacity: 0.5;
-}
-.header-block .header_nav .header-nav_right {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.header-block .header_nav .header-nav_right .header_nav-navbar {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding-top: 6px;
-  margin-right: 54px;
-}
-.header-block .header_nav .header-nav_right .header_nav-navbar li {
-  font-size: 12px;
-  line-height: 14px;
-  color: #fff;
-  margin-right: 45px;
-  cursor: pointer;
-  list-style: none;
-}
-.header-block .header_nav .header-nav_right .header_nav-navbar li a {
-  color: #fff;
-  text-decoration: none;
-}
-.header-block .header_nav .header-nav_right .header_nav-navbar li:last-child {
-  margin-right: 0px;
-}
-.header-block .header_nav .header-nav_right .header_nav-navbar li:after {
-  display: block;
-  content: "";
-  height: 2px;
-  width: 0%;
   background-color: #3b60d0;
-  transition: width 0.4s ease-in-out;
+  margin-bottom: 45px;
 }
-.header-block .header_nav .header-nav_right .header_nav-navbar li:hover:after,
-.header-block .header_nav .header-nav_right .header_nav-navbar li:focus:after {
-  width: 100%;
+.navbaropen{
+  margin-left: 134px;
 }
-.header-block .header_nav .header-nav_right .header_nav-social {
-  display: flex;
-  flex-direction: row;
-  margin-right: 43px;
+.navbar a{
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
 }
-.header-block .header_nav .header-nav_right .header_nav-social .social-img {
-  width: 15px;
-  height: 15px;
-  margin-right: 20px;
-  cursor: pointer;
-}
-.header-block .header_nav .header-nav_right .header_nav-social .social-img:last-child {
-  margin-right: 0px;
-}
-.header-block .header_nav .header-nav_right .header_nav-social .social-img:hover {
-  opacity: 0.5;
-}
-.header-block .header_nav .header-nav_right .header_nav-lang {
-  width: 35px;
-  font-size: 12px;
-  line-height: 24px;
-  text-transform: uppercase;
-  color: #fff;
-  background-image: url('../assets/mini_arrow.png');
-  background-repeat: no-repeat;
-  background-position: 20px 10px;
-  cursor: pointer;
-  position: relative;
-}
-.header-block .header_nav .header-nav_right .header_nav-lang .other {
-  position: absolute;
-}
-.header-block .header_nav .header-nav_right .header_nav-lang .other li {
+.navbar ul{
+  margin: 8px 0 0 0;
   list-style: none;
 }
-.header-block .header_nav .header-nav_right .header_nav-lang .other li:hover {
-  background: #1e2123;
-  width: 30px;
-}
-.header-block .header_nav .header-nav_right .header_nav-login {
-  margin-left: 35px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.header-block .header_nav .header-nav_right .header_nav-login .btn {
-  font-size: 12px;
-  color: #fff;
-}
-.header-block .header_nav .header-nav_right .header_nav-login .btn-check {
-  line-height: 29px;
-  width: 115px;
-  background: #4169e2;
-  margin-right: 34px;
-  text-align: center;
-  border-radius: 50px;
-  border: 1px solid #4169e2;
-  cursor: pointer;
-}
-.header-block .header_nav .header-nav_right .header_nav-login .btn-check:hover {
-  background: none;
-  box-sizing: border-box;
-}
-.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance .login_hover {
-  display: none;
-}
-.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance img {
-  width: 13px;
-  height: 13px;
-  margin-right: 5px;
-}
-.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance:hover {
-  color: #3b60d0;
-}
-.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance:hover .login_hover {
-  display: block;
-}
-.header-block .header_nav .header-nav_right .header_nav-login .btn-entrance:hover .login_activ {
-  display: none;
-}
-.header-block .header_nav .menu-btn {
-  z-index: 1000;
-  display: none;
-  width: 22px;
-  height: 22px;
-  position: relative;
-}
-.header-block .header_nav .menu-mobile {
-  position: absolute;
+.side-nav{
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
-  z-index: 100;
-  width: 100%;
-  padding-top: 75px;
-  background: #0f151b;
+  background-color: #2e3339;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 34px;
+  padding-bottom: 78px;
 }
-.header-block .header_nav .menu-mobile .logo_mobile {
-  width: 126px;
+.sidenavopen{
+  height: 100%;
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #2e3339;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 34px;
+  padding-bottom: 78px;
 }
-.header-block .header_nav .menu-mobile .header-top__menu-mobile {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar {
-  width: 100%;
-  display: inlime-flex;
-  flex-direction: column;
-  margin-top: 30px;
-}
-.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li {
-  display: block;
-  font-size: 12px;
-  line-height: 14px;
-  color: #fff;
-  cursor: pointer;
-  list-style: none;
-  margin-bottom: 25px;
-  max-width: 120px;
-}
-.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li a {
-  color: #fff;
+.side-nav a{
+  padding: 10px 10px 10px 30px;
   text-decoration: none;
-}
-.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li:after {
+  font-size: 22px;
+  color: #ccc;
   display: block;
-  content: "";
-  height: 2px;
-  width: 0%;
-  background-color: #3b60d0;
-  transition: width 0.4s ease-in-out;
+  transition: 0.3s;
 }
-.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li:hover:after,
-.header-block .header_nav .menu-mobile .header-top__menu-mobile .header_nav-navbar li:focus:after {
-  width: 100%;
-}
-.header-block .header_nav .menu-mobile .header_nav-social {
-  display: flex;
-  flex-direction: row;
-  margin-right: 20px;
-  margin-left: 20px;
-  margin-bottom: 30px;
-}
-.header-block .header_nav .menu-mobile .header_nav-social .social-img {
-  width: 15px;
-  height: 15px;
-  margin-right: 20px;
-  cursor: pointer;
-}
-.header-block .header_nav .menu-mobile .header_nav-social .social-img:last-child {
-  margin-right: 0px;
-}
-.header-block .header_nav .menu-mobile .header_nav-social .social-img:hover {
-  opacity: 0.5;
-}
-.header-block .header_nav .menu-mobile .header_nav-lang {
-  width: 35px;
-  font-size: 12px;
-  line-height: 24px;
-  text-transform: uppercase;
+.side-nav a:hover{
   color: #fff;
-  background-image: url('../assets/mini_arrow.png');
-  background-repeat: no-repeat;
-  background-position: 20px 10px;
-  cursor: pointer;
-  position: relative;
 }
-.header-block .header_nav .menu-mobile .header_nav-lang .other {
+.side-nav .btn-close{
   position: absolute;
+  top: 0;
+  right: 22px;
+  font-size: 36px;
+  margin-left: 50px;
 }
-.header-block .header_nav .menu-mobile .header_nav-lang .other li {
-  list-style: none;
-}
-.header-block .header_nav .menu-mobile .header_nav-lang .other li:hover {
-  background: #1e2123;
-  width: 30px;
-}
-.header-block .header_nav .menu-mobile .header_nav-login {
+.side-nav {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  margin-left: 20px;
-  margin-bottom: 30px;
 }
-.header-block .header_nav .menu-mobile .header_nav-login .btn {
+.side-nav .toplist .toplist-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 45px;
+  cursor: pointer;
+}
+.side-nav .toplist .toplist-item .toplist-item_img {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 10px;
+}
+.side-nav .toplist .toplist-item .toplist-item_img-logo {
+  width: 47px;
+  height: 47px;
+}
+.side-nav .toplist .toplist-item .toplist-item_name {
   font-size: 12px;
+  line-height: 12px;
   color: #fff;
 }
-.header-block .header_nav .menu-mobile .header_nav-login .btn-check {
-  line-height: 29px;
-  width: 115px;
-  background: #4169e2;
-  margin-right: 34px;
-  text-align: center;
-  border-radius: 50px;
-  border: 1px solid #4169e2;
-  cursor: pointer;
-}
-.header-block .header_nav .menu-mobile .header_nav-login .btn-check:hover {
-  background: none;
-  box-sizing: border-box;
-}
-.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance .login_hover {
-  display: none;
-}
-.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance img {
-  width: 13px;
-  height: 13px;
-  margin-right: 5px;
-}
-.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance:hover {
+.side-nav .toplist .toplist-item:hover .toplist-item_name {
   color: #3b60d0;
 }
-.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance:hover .login_hover {
-  display: block;
+.side-nav .botlist .botlist-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 45px;
+  cursor: pointer;
 }
-.header-block .header_nav .menu-mobile .header_nav-login .btn-entrance:hover .login_activ {
+.side-nav .botlist .botlist-item .botlist-item_img {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 10px;
+}
+.side-nav .botlist .botlist-item .botlist-item_name {
+  font-size: 12px;
+  line-height: 12px;
+  color: #fff;
+}
+.side-nav .botlist .botlist-item:hover .botlist-item_name {
+  color: #3b60d0;
+}
+
+.mainopen{
+  transition: margin-left 0.3s;
+  padding: 20px;
+  overflow: hidden;
+  width: 100%;
+  margin-left: 250px;
+}
+nav{
+  transition: margin-left 0.3s;
+}
+.bar{
+  display: block;
+  position: relative;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+}
+.bar:after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+  /*transform: translateY(-2px) rotateZ(45deg);*/
+}
+.bar:before{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 4px;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+  /*transform: translateY(0px) rotateZ(-45deg);*/
+}
+.baropened{
+  display: block;
+  position: relative;
+  height: 0px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+}
+.baropened:after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+  transform: translateY(-5px) rotateZ(45deg);
+}
+.baropened:before{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 4px;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+  transform: translateY(5px) rotateZ(-45deg);
+}
+
+.profile{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.profile .profilebox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  margin-right: 40px;
+}
+.profile .profilebox .user-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin-right: 7px;
+}
+.profile .profilebox b{
+  font-size: 12px;
+  margin-right: 10px;
+}
+.profile .profilebox .dropdown-img{
+  width: 8px;
+  height: 5px;
+}
+.profile .profilebox .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  text-align: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.profile .profilebox .dropdown-menu > li {
+  display: block;
+  padding: 5px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.profile .profilebox .dropdown-menu > li:hover{
+  color: #262626;
+  background-color: #f5f5f5;
+}
+.profile .profilexit{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+}
+.profile .profilexit b{
+  font-size: 12px;
+  line-height: 10px;
+}
+.profile .profilexit:hover{
+  color: #1d2982;
+}
+.profile .profilexit img{
+  width: 13px;
+  height: 13px;
+  margin-right: 6px;
+}
+.profile .profilexit .logout-img_hover{
   display: none;
 }
-
-@media (max-width: 1211px) {
-  .header-nav_right {
-    width: 100%;
-    justify-content: space-between !important;
-    margin-top: 30px;
-  }
+.profilexit:hover .logout-img {
+  display: none;
 }
-@media (max-width: 1135px) {
-  .header-nav_right {
-    display: none !important;
-  }
-  .menu-btn {
-    display: block !important;
-  }
+.profilexit:hover .logout-img_hover {
+  display: block;
 }
-@media (max-width: 768px) {
-  .header_video {
-    justify-content: center !important;
-  }
-  .header_video-title {
-    text-align: center;
-  }
-  .spot {
-    margin-left: 0px !important;
-  }
-  .down-arrow {
-    height: 50px;
-  }
-}
-@media (max-width: 600px) {
-  .header {
-    height: auto !important;
-  }
-  .header_video {
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
-  }
-  .header_video-title {
-    font-size: 24px !important;
-  }
-  .spot {
-    font-size: 24px !important;
-    line-height: 50px !important;
-    max-width: 340px !important;
-    margin: 0 auto !important;
-  }
-}
-@media (max-width: 320px) {
-  .header-block .header_video .header_video-item .item-img {
-    width: 112px;
-    height: 70px;
-    margin-bottom: 0px;
-  }
-}
-
 </style>
 
 
@@ -468,6 +382,7 @@ export default {
   name: "navbar",
   data() {
     return{
+      opened: false,
       show: false,
       isShowing: false
     }

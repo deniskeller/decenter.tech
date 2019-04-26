@@ -1,9 +1,8 @@
 <template>
     <div class="bg-content">
+      <navbar/>
         <div class="container">
-          <div class="header-block">
-            <navbarSecond/>
-          </div>
+          
           <div class="content-page">
             <div class="contract-content">
                 <div class="contract-content_header">
@@ -117,13 +116,13 @@
 
 import footerBlock from "../components/footerBlock.vue";
 import portfolioTable from "../components/portfolioTable.vue";
-import navbarSecond from "../components/navbarSecond.vue";
+import navbar from "../components/navbar.vue";
 export default {
   name: "contract",
   components: {
     footerBlock,
     portfolioTable,
-    navbarSecond
+    navbar
   },
   data() {
     return{

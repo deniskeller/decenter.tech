@@ -2,7 +2,7 @@
   <div class="header-block">
     <div class="container">
       <div class="header">
-          <navbar/>
+          <navbarMain/>
           <div class="header_video">
             <div class="header_video-title">
               CLICK. INVEST. TRADE.
@@ -184,11 +184,11 @@
 
 
 <script>
-import navbar from "../components/navbar.vue";
+import navbarMain from "../components/navbarMain.vue";
 export default {
   name: "headerBlock",
   components: {
-    navbar
+    navbarMain
   },
   data() {
     return{

@@ -8,7 +8,7 @@ import main from "./views/main.vue";
 import myContracts from "./views/myContracts.vue";
 import contract from "./views/contract.vue";
 import portfolio from "./views/portfolio.vue";
-import mainProducts from "./views/mainProducts.vue";
+import products from "./views/products.vue";
 
 
 Vue.use(Router);
@@ -57,9 +57,9 @@ export default new Router({
       component: portfolio
     },
     {
-      path: "/mainProducts", 
-      name: "mainProducts",
-      component: mainProducts
+      path: "/products", 
+      name: "products",
+      component: products
     }
   ]
 });

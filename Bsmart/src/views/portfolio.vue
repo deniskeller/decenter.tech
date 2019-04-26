@@ -1,10 +1,8 @@
 <template>
     <div class="bg-content">
+      <navbar/>
         <div class="container">
           
-          <div class="header-block">
-            <navbarSecond/>
-          </div>
           <div class="content-page">
             <div class="portfolio-content">
                 <div class="portfolio-content_header">
@@ -203,14 +201,14 @@
 import footerBlock from "../components/footerBlock.vue";
 import portfolioItemTable from "../components/portfolioItemTable.vue";
 import contractChart from "../components/contractChart.vue";
-import navbarSecond from "../components/navbarSecond.vue";
+import navbar from "../components/navbar.vue";
 export default {
   name: "portfolio",
   components: {
     footerBlock,
     portfolioItemTable,
     contractChart,
-    navbarSecond
+    navbar
   },
   data() {
     return{

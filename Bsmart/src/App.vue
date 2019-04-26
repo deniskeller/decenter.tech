@@ -42,10 +42,10 @@ export default {
     margin: 0 auto;
   }
   .bg-content {
-    background: url('assets/Background.jpg') no-repeat top center;
-    background-size: contain;
+    background: #0f151b;
     width: 100%;
     height: 100%;
+    min-height: 100vh;
   }
   .bg-content .content-page {
     width: 100%;
