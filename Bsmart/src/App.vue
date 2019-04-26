@@ -34,13 +34,25 @@ export default {
   }
   body {
     background: #0f151b;
-    
     /*background: #fff;*/
   }
   .container{
     max-width: 1248px !important;
     width: 100% !important;
     margin: 0 auto;
+  }
+  .bg-content {
+    background: url('assets/Background.jpg') no-repeat top center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+  }
+  .bg-content .content-page {
+    width: 100%;
+    height: 100%;
+    background: #001548;
+    margin-bottom: 80px;
+    padding: 33px 73px 43px;
   }
  @media (max-width: 1280px) {
    .container{

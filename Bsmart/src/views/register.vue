@@ -3,7 +3,7 @@
     <div class="modal-block">
       <div class="overflow"></div>
       <img src="../assets/Logo.svg" alt="" class="logo">
-      <div class="modal-block_title">Регистрация</div>
+      <div class="modal-block_title">Регистрация2</div>
       <div class="modal-block_input modal-block_input-mail">
         <input class="input input-email" type="text" placeholder="E-mail" name="" autofocus required/>
       </div>
