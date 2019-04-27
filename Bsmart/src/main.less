@@ -48,9 +48,17 @@
       }
       .progresbar__progresbar{
         width: 100%;
+        position: relative;
         max-width: 188px;
         height: 8px;
-        background: #23cce9;
+        background: #eeeeee;
+        &__progress{
+          height:100%;
+          background:#23cce9;
+          position:absolute;
+          top:0;
+          left:0;
+        }
       }
     }
     .product-item__coin{
@@ -104,6 +112,173 @@
   }
 }
 
+/*product-modal*/
+.modal-vue{
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  margin-top: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .overlay {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+  }
+  .product-modal{
+    position: relative;
+    width: 100%;
+    max-width: 488px;
+    z-index: 9999;
+    margin: 0 20px;
+    padding: 80px 105px 90px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .close{
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 29px;
+      height: 29px;
+      font-size: 32px;
+      line-height: 30px;
+      color: #fff;
+      text-align: center;
+      background: #c20d19;
+      border-radius: 50%;
+      transform: rotateZ(-45deg);
+      cursor: pointer;
+      font-family: Arial;
+    }
+    .product-modal__title{
+      font-size: 20px;
+      line-height: 12px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      color: #000;
+    }
+    .product-modal__choice{
+      font-size: 12px;
+      line-height: 10px;
+      font-weight: 500;
+      color: #000;
+      margin-bottom: 12px;
+    }
+    .product-modal__currency{
+      width: 100%;
+      max-width: 282px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      .currency-item{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 85px;
+        height: 32px;
+        border: 1px solid #3b60d0;
+        border-radius: 20px;
+        .currency-item_img{
+          margin-right: 4px;
+          width: 18px;
+          height: 18px;
+          img{
+            width: 18px;
+            height: 18px;
+          }
+        }
+        .currency-item_value{
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 10px;
+          color: #000;
+          text-transform: uppercase;
+        }
+      }
+      .currency-item:hover{
+        background: #3b60d0;
+      }
+    }
+    .product-modal__buy{
+      width: 100%;
+      max-width: 282px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      .buy-enter{
+        outline: none;
+        width: 100%;
+        max-width: 129px;
+        height: 32px;
+        line-height: 32px;
+        border: 1px solid #3b60d0;
+        border-radius: 20px;
+        padding: 10px 15px;
+      }
+      input[placeholder] {
+        font-size: 12px;
+        color: #000;
+      }
+      .buy-course{
+        width: 100%;
+        max-width: 129px;
+        height: 32px;
+        font-size: 12px;
+        line-height: 32px;
+        border: 1px solid #3b60d0;
+        border-radius: 20px;
+        color: #000;
+        text-align: center;
+        .buy-course__value{
+          margin-right: 15px;
+        }
+      }
+    }
+    .product-modal_btn{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 282px;
+      height: 34px;
+      font-size: 12px;
+      background: #4169e2;
+      text-align: center;
+      border-radius: 50px;
+      border: 1px solid #4169e2;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    .product-modal_btn:hover{
+      background: none;
+      color: #000;
+    }
+    .product-modal__support{
+      font-size: 8px;
+      color: #000;
+      margin-left: 5px;
+      .support-question:hover{
+        cursor: pointer;
+        color: #3b60d0;
+      }
+    }
+  }
+}
+
 @media (max-width: 1024px) {
   .products-page .product-item{
     padding: 30px 20px 30px;
@@ -113,6 +288,9 @@
 @media (max-width: 768px) {
   .products-page .product-item{
     width: calc(50% - 10px); 
+  }
+  .modal-vue .product-modal{
+    padding: 80px 10px 90px;
   }
 }
 @media (max-width: 500px) {
