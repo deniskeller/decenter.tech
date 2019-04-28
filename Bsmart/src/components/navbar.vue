@@ -104,9 +104,7 @@
   background-color: #3b60d0;
   margin-bottom: 45px;
 }
-.navbaropen{
-  margin-left: 134px;
-}
+
 .navbar a{
   display: block;
   color: #f2f2f2;
@@ -374,6 +372,27 @@ nav{
 .profilexit:hover .logout-img_hover {
   display: block;
 }
+
+@media (max-width: 500px) {
+  .profile .profilebox{
+    margin-right: 15px;
+  }
+  .profile .profilebox b{
+    display: none;
+  }
+  .profile .profilexit img {
+    display: none;
+  }
+  .profile .profilebox .dropdown-menu{
+    left: -62px;
+  }
+}
+
+/*@media(max-width: 1570px) {*/
+/*  .navbaropen{*/
+/*    margin-left: 134px;*/
+/*  }*/
+/*}*/
 </style>
 
 

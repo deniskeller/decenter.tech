@@ -7,19 +7,20 @@
           <div class="products-page">
             <div class="product-item" v-for="(product, title) in products" v-bind:key="title">
               <div class="product-item__img">
-                <img :src="product.image" width="63" height="63" alt="">
+                <img :src="product.image" alt="">
               </div>
               <div class="product-item__title">{{ product.title }}</div>
               <div class="product-item__border"></div>
               <div class="product-item__progresbar">
-                <div class="progresbar__title">Risk & Return</div>
-                <div class="progresbar__progresbar">
-                  <div class="progresbar__progresbar__progress" :style="{'width':product.value + '%'}">
+                <div class="progresbar-title">Risk & Return</div>
+                <div class="progresbar-progresbar">
+                  <div class="progresbar-progresbar__bg"></div>
+                  <div class="progresbar-progresbar__progress" :style="{'width':product.value + '%'}">
                   
                   </div>
                 </div>
               </div>
-              <div class="product-item__coin"> 
+              <div class="product-item__coin">
                 <div class="coin-item">
                   <div class="coin-item__name">BTC</div>
                   <div class="coin-item__value">{{ product.btcValue }}</div>
@@ -34,7 +35,7 @@
                 </div>
               </div>
             <div class="product-item__btn btn-invest" @click="showModalWithProduct(title)">
-                <img src="../assets/main/credit-card.svg" width="16" height="16" alt="">
+                <img src="../assets/main/credit-card.svg" alt="">
                 <p>Инвестировать</p>
               </div>
             </div>
@@ -135,24 +136,24 @@ export default {
       amount: 1,
       products: { 
         'VENTURE': {
-          title: "VENTURE",
+          title: "Venture",
           value: 80,
           btcValue: 0.123,
           ethValue: 0.123,
           usdValue: 0.555,
-          image: require('@/assets/main/cannabis.svg')
+          image: require('@/assets/main/startup.svg')
         },
         'SMART':{
-          title: "SMART",
+          title: "Smart",
           value: 20,
           btcValue: 0.456,
           ethValue: 0.456,
           usdValue: 0.233,
-          image: require('@/assets/main/cannabis.svg')
+          image: require('@/assets/main/brain.svg')
         },
         'cannabis':{
-          title: "cannabis",
-          value: 95,
+          title: "Cannabis",
+          value: 32,
           btcValue: 0.321,
           ethValue: 0.789,
           usdValue: 0.222,
