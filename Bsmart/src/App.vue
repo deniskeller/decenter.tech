@@ -41,6 +41,7 @@ export default {
     height: 100%;
     min-height: 100vh;
     position: relative;
+    padding-top: 98px;
   }
   .bg-content .content-page {
     width: 100%;

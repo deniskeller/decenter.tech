@@ -44,7 +44,8 @@
             </a>
           </span>
           
-          <div class="toplist">
+          <div class="overflow-hidden">
+            <div class="toplist">
             <div class="toplist-item" @click="goTo('/');">
               <div class="toplist-item_img toplist-item_img-logo">
                 <img src="../assets/main/logo_menu.png" alt="">
@@ -76,7 +77,7 @@
             </div>
           </div>
           
-          <div class="botlist">
+            <div class="botlist">
             <div class="botlist-item">
               <div class="botlist-item_img">
                 <img src="../assets/main/headphones.svg" alt="">
@@ -90,6 +91,7 @@
               <div class="botlist-item_name">Information</div>
             </div>
           </div>
+          </div>
           
         </div>
         
@@ -102,6 +104,12 @@
 @import '../main.less';
 .navbar-bg{
   background-color: #3b60d0;
+  width: 100%;
+  height: 52px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  
 }
 .navbar{
   height: 46px;
@@ -143,8 +151,6 @@
   background-color: #2e3339;
   /*overflow-x: hidden;*/
   transition: 0.3s;
-  padding-top: 34px;
-  padding-bottom: 78px;
 }
 .sidenavopen{
   height: 100%;
@@ -156,8 +162,6 @@
   background-color: #2e3339;
   /*overflow-x: hidden;*/
   transition: 0.3s;
-  padding-top: 34px;
-  padding-bottom: 78px;
 }
 .side-nav .btn-menu{
   padding: 10px 10px 10px 30px;
@@ -227,18 +231,7 @@
 .side-nav .botlist .botlist-item:hover .botlist-item_name {
   color: #3b60d0;
 }
-.side-nav::-webkit-scrollbar-track{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
-}
-.side-nav::-webkit-scrollbar{
-	width: 3px;
-	background-color: #F5F5F5;
-}
-.side-nav::-webkit-scrollbar-thumb{
-	background-color: #000000;
-	border: 2px solid #555555;
-}
+
 
 .mainopen{
   transition: margin-left 0.3s;
@@ -381,6 +374,29 @@ nav{
   right: -40px;
   top: 25px;
 }
+.overflow-hidden{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  padding-top: 38px;
+  padding-bottom: 78px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.overflow-hidden::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+.overflow-hidden::-webkit-scrollbar{
+	width: 3px;
+	background-color: #F5F5F5;
+}
+.overflow-hidden::-webkit-scrollbar-thumb{
+	background-color: #000000;
+	border: 2px solid #555555;
+}
 
 .profile{
   display: flex;
@@ -488,8 +504,14 @@ nav{
   .profile .profilebox .dropdown-menu{
     left: -62px;
   }
+  .side-nav .toplist .toplist-item{
+    margin-bottom: 20px;
+  }
+  .side-nav .botlist .botlist-item{
+    margin-bottom: 20px;
+  }
 }
-
+ 
 @media(max-width: 1240px) {
   .navbaropen{
     margin-left: 160px;
