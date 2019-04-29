@@ -118,7 +118,7 @@
   margin-left: -10px;
 }
 .navbaropen{
-  margin-left: 134px;
+  margin-left: 160px;
 }
 
 .navbar a{
