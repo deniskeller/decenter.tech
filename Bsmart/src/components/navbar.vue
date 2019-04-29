@@ -2,8 +2,8 @@
     <div class="navbar-bg">
       <div class="container">
         <nav id="navigator" class="navbar" :class="{navbaropen: opened}">
-          <span class="open-slide">
-            <a href="#" @click="opened = !opened">
+          <span class="open-slide" @click="opened = !opened">
+            <a class="btn-menu" href="#" >
               <div class="con">
                 <div class="bar" :class="{baropened: opened}"></div>
               </div>
@@ -35,6 +35,14 @@
         </nav>
         
         <div id="side-menu" class="side-nav" :class="{sidenavopen: opened}">
+          
+          <span class="open-slide open-slide__active" @click="opened = !opened">
+            <a class="btn-menu btn-menu__active" href="#" >
+              <div class="con">
+                <div class="bar1" :class="{baropened1: opened}"></div>
+              </div>
+            </a>
+          </span>
           
           <div class="toplist">
             <div class="toplist-item" @click="goTo('/');">
@@ -104,6 +112,14 @@
   background-color: #3b60d0;
   margin-bottom: 45px;
 }
+.open-slide{
+  cursor: pointer;
+  padding: 10px;
+  margin-left: -10px;
+}
+.navbaropen{
+  margin-left: 134px;
+}
 
 .navbar a{
   display: block;
@@ -119,13 +135,13 @@
 }
 .side-nav{
   height: 100%;
-  width: 0;
+  width: 130px;
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
+  left: -180px;
   background-color: #2e3339;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
   transition: 0.3s;
   padding-top: 34px;
   padding-bottom: 78px;
@@ -138,12 +154,12 @@
   top: 0;
   left: 0;
   background-color: #2e3339;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
   transition: 0.3s;
   padding-top: 34px;
   padding-bottom: 78px;
 }
-.side-nav a{
+.side-nav .btn-menu{
   padding: 10px 10px 10px 30px;
   text-decoration: none;
   font-size: 22px;
@@ -151,7 +167,7 @@
   display: block;
   transition: 0.3s;
 }
-.side-nav a:hover{
+.side-nav .btn-menu:hover{
   color: #fff;
 }
 .side-nav .btn-close{
@@ -265,7 +281,7 @@ nav{
   /*transform: translateY(0px) rotateZ(-45deg);*/
 }
 .baropened{
-  display: block;
+  display: none;
   position: relative;
   height: 0px;
   width: 16px;
@@ -293,6 +309,77 @@ nav{
   background: #fff;
   transition: all .3s ease;
   transform: translateY(5px) rotateZ(-45deg);
+}
+
+.bar1{
+  display: block;
+  position: relative;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+}
+.bar1:after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+  /*transform: translateY(-2px) rotateZ(45deg);*/
+}
+.bar1:before{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 4px;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+  /*transform: translateY(0px) rotateZ(-45deg);*/
+}
+.baropened1{
+  display: block;
+  position: relative;
+  height: 0px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+}
+.baropened1:after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+  transform: translateY(-5px) rotateZ(45deg);
+}
+.baropened1:before{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 4px;
+  height: 2px;
+  width: 16px;
+  background: #fff;
+  transition: all .3s ease;
+  transform: translateY(5px) rotateZ(-45deg);
+}
+.open-slide__active{
+  padding: 0px;
+  margin-left: 0px;
+}
+.side-nav .btn-menu__active{
+  padding: 0px;
+  position: absolute;
+  right: -40px;
+  top: 25px;
 }
 
 .profile{
@@ -403,11 +490,12 @@ nav{
   }
 }
 
-@media(max-width: 1570px) {
+@media(max-width: 1240px) {
   .navbaropen{
-    margin-left: 134px;
+    margin-left: 160px;
   }
 }
+
 </style>
 
 
