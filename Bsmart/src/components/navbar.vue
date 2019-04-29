@@ -107,6 +107,7 @@
 
 .navbar a{
   display: block;
+  float: left;
   color: #f2f2f2;
   text-align: center;
   text-decoration: none;
@@ -209,6 +210,18 @@
 }
 .side-nav .botlist .botlist-item:hover .botlist-item_name {
   color: #3b60d0;
+}
+.side-nav::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+.side-nav::-webkit-scrollbar{
+	width: 3px;
+	background-color: #F5F5F5;
+}
+.side-nav::-webkit-scrollbar-thumb{
+	background-color: #000000;
+	border: 2px solid #555555;
 }
 
 .mainopen{
@@ -373,6 +386,8 @@ nav{
   display: block;
 }
 
+
+
 @media (max-width: 500px) {
   .profile .profilebox{
     margin-right: 15px;
@@ -388,11 +403,11 @@ nav{
   }
 }
 
-/*@media(max-width: 1570px) {*/
-/*  .navbaropen{*/
-/*    margin-left: 134px;*/
-/*  }*/
-/*}*/
+@media(max-width: 1570px) {
+  .navbaropen{
+    margin-left: 134px;
+  }
+}
 </style>
 
 
