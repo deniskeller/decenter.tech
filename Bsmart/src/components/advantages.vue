@@ -138,6 +138,6 @@
 
 <script>
 export default {
-  name: "advantages"
+  
 };
 </script>
